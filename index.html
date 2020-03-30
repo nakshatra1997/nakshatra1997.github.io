@@ -18,16 +18,7 @@
 // console.log(screen.height);
 //
 // });
-function func(){
-  // $(".particles-js-canvas-el").height($(".particles-js-canvas-el").height()+window.pageYOffset);
-  // $(".particles-js-canvas-el").attr("height",screen.height+$("#zodiac-content").height());}
-  console.log(screen.height+$("#zodiac-content").height());}
-// console.log($(".particles-js-canvas-el").height(screen.height));
-// console.log(screen.height);
-// console.log(window.innerHeight);
-// console.log(Math.max(
-//   document.body.scrollHeight+window.pageYOffset, document.documentElement.scrollHeight+window.pageYOffset));
-// }
+
 function formSubmit(){
 
   var gender=document.getElementsByName("optradio");
@@ -38,22 +29,24 @@ function formSubmit(){
                   userGender=gender[i].value;
               }
 
-  console.log(userGender);
+
   var zodiac=$("#inlineFormCustomSelect").val();
-  console.log(zodiac);
+
 
   var mdata=JSON.stringify(horo);
-  console.log(mdata);
+
   var sd=JSON.parse(mdata);
-  console.log(sd);
+
   var content=sd[zodiac][userGender];
-  func();
+
   document.getElementById("zodiac-content").innerHTML=content;
 }
 </script>
   </head>
   <body>
 
+    <div id="particles-js">
+    </div>
 
 <!-- particles.js container -->
 <div class="welcome">
@@ -115,8 +108,6 @@ function formSubmit(){
 
   </footer>
   <!-- Footer -->
-</div>
-<div id="particles-js">
 </div>
 
 <!-- scripts -->
