@@ -16,7 +16,9 @@
 
   <script>
   function func(){
-    $(".particles-js-canvas-el").height(screen.height);
+  $(".particles-js-canvas-el").attr("height",screen.height+$(".welcome-privacy").height());
+  console.log($(".particles-js-canvas-el").attr("height",screen.height+$(".welcome-privacy").height()));
+  console.log(screen.height);
   }
   </script>
 
@@ -27,7 +29,7 @@
 <!-- particles.js container -->
 
 
-<div id="particles-js" style="padding-top:2%">
+<div id="particles-js" style="padding-top:2%;background-repeat:no-repeat">
   <div class="welcome-privacy" >
     <h3> <u>Privacy Policy</u>  </h3>
     <p> If you require any more information or have any questions about our privacy policy, please feel free to contact us by email at . </p>

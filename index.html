@@ -6,17 +6,28 @@
   <meta name="description" content="Know something about yourself.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- <link rel="stylesheet" media="screen" href="css/style.css"> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script>
-  function func(){
-    $(".particles-js-canvas-el").height(screen.height);
 
-
-  }
-  </script>
 <script type="text/javascript" src="horo.json"></script>
 <script>
+// $("body").scroll(function(){
+//   $(".particles-js-canvas-el")[0].height(screen.height);
+// console.log($(".particles-js-canvas-el")[0].height(screen.height));
+// console.log(screen.height);
+//
+// });
+function func(){
+  // $(".particles-js-canvas-el").height($(".particles-js-canvas-el").height()+window.pageYOffset);
+  $(".particles-js-canvas-el").attr("height",screen.height+$("#zodiac-content").height());}
+// console.log($(".particles-js-canvas-el").height(screen.height));
+// console.log(screen.height);
+// console.log(window.innerHeight);
+// console.log(Math.max(
+//   document.body.scrollHeight+window.pageYOffset, document.documentElement.scrollHeight+window.pageYOffset));
+// }
 function formSubmit(){
   var gender=document.getElementsByName("optradio");
   console.log(gender);
