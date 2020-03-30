@@ -5,11 +5,25 @@
 
 #particles-js{
   background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(image.jpg);
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-position: center;
-}
+  background-repeat: no-repeat;
 
+
+
+
+}
+.welcome-privacy{
+  
+  height: inherit;
+  width: 80%;
+  margin-left: 5%;
+  position: absolute;
+  color:#fff;
+  font-family: sans-serif;
+}
 .logo{
   margin-top: 25px;
   font-size: 28px;
@@ -20,7 +34,7 @@
 .welcome{
   width: 80%;
   margin-left: 5%;
-  position:absolute;
+  position: absolute;
   color:#fff;
   font-family: sans-serif;
 }
