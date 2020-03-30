@@ -29,6 +29,7 @@ function func(){
 //   document.body.scrollHeight+window.pageYOffset, document.documentElement.scrollHeight+window.pageYOffset));
 // }
 function formSubmit(){
+
   var gender=document.getElementsByName("optradio");
   console.log(gender);
   var userGender="";
@@ -46,11 +47,12 @@ function formSubmit(){
   var sd=JSON.parse(mdata);
   console.log(sd);
   var content=sd[zodiac][userGender];
+  func();
   document.getElementById("zodiac-content").innerHTML=content;
 }
 </script>
   </head>
-  <body onscroll="func()">
+  <body>
 
 
 <!-- particles.js container -->
