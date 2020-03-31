@@ -20,26 +20,51 @@
 // });
 
 function formSubmit(){
+  var gender=document.forms["reg"]["optradio"];
+  var name=document.forms["reg"]["name"];
+  var zodiac=document.forms["reg"]["zodiac"];
+  var result=true;
+  if (name.value == "")
+    {
+        window.alert("Please enter your name.");
+        name.focus();
+        result=false;
 
-  var gender=document.getElementsByName("optradio");
-  console.log(gender);
-  var userGender="";
-  for(i = 0; i < gender.length; i++) {
-                  if(gender[i].checked)
-                  userGender=gender[i].value;
-              }
+    }
+    if(gender.value==""){
+      window.alert("Please enter your gender");
+      gender.focus();
+      result=false;
+    }
+    
+    if(zodiac.value=="Select"){
+      window.alert("Please enter zodiac sign");
+      zodiac.focus();
+      result=false;
+    }
+    if(result){
+      var gender=document.getElementsByName("optradio");
+      console.log(gender);
+      var userGender="";
+      for(i = 0; i < gender.length; i++) {
+                      if(gender[i].checked)
+                      userGender=gender[i].value;
+                  }
 
 
-  var zodiac=$("#inlineFormCustomSelect").val();
+      var zodiac=$("#inlineFormCustomSelect").val();
 
 
-  var mdata=JSON.stringify(horo);
+      var mdata=JSON.stringify(horo);
 
-  var sd=JSON.parse(mdata);
+      var sd=JSON.parse(mdata);
 
-  var content=sd[zodiac][userGender];
+      var content=sd[zodiac][userGender];
 
-  document.getElementById("zodiac-content").innerHTML=content;
+      document.getElementById("zodiac-content").innerHTML=content;
+    }
+
+
 }
 </script>
   </head>
@@ -53,10 +78,10 @@ function formSubmit(){
 
   <div class="form-block">
     <div class="logo">Know About Yourself</div>
-    <form>
+    <form name="reg">
   <div class="form-group" style="margin-top:10%">
     <label for="name">Enter your name</label>
-    <input type="text" class="form-control" id="name"  placeholder="Enter name here">
+    <input type="text" class="form-control" id="name"  name="name"placeholder="Enter name here" required>
 
   </div>
   <div class="form-check">
@@ -71,8 +96,8 @@ function formSubmit(){
   </div>
 
   <label class="mr-sm-2"  style="margin-top:5%"for="inlineFormCustomSelect">Select zodiac sign</label>
-     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-       <option selected>Choose...</option>
+     <select class="custom-select mr-sm-2" name="zodiac"id="inlineFormCustomSelect">
+       <option selected>Select</option>
        <option value="0">Aries</option>
        <option value="1">Taurus</option>
        <option value="2">Gemini</option>
