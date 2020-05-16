@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Know everything about you</title>
+  <meta name="description" content="Know something about yourself.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><!-- <link rel="stylesheet" media="screen" href="css/style.css"> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+  <script data-ad-client="ca-pub-6467687460711292" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script type="text/javascript" src="horo.json"></script>
+<script>
+// $("body").scroll(function(){
+//   $(".particles-js-canvas-el")[0].height(screen.height);
+// console.log($(".particles-js-canvas-el")[0].height(screen.height));
+// console.log(screen.height);
+//
+// });
+function formSubmit(){
+  var gender=document.forms["reg"]["optradio"];
+  var name=document.forms["reg"]["name"];
+  var zodiac=document.forms["reg"]["zodiac"];
+  var result=true;
+  if (name.value == "")
+    {
+        window.alert("Please enter your name.");
+        name.focus();
+        result=false;
+    }
+    if(gender.value==""){
+      window.alert("Please enter your gender");
+      gender.focus();
+      result=false;
+    }
+    if(zodiac.value=="Select"){
+      window.alert("Please enter zodiac sign");
+      zodiac.focus();
+      result=false;
+    }
+    if(result){
+      var gender=document.getElementsByName("optradio");
+      console.log(gender);
+      var userGender="";
+      for(i = 0; i < gender.length; i++) {
+                      if(gender[i].checked)
+                      userGender=gender[i].value;
+                  }
+      var zodiac=$("#inlineFormCustomSelect").val();
+      var mdata=JSON.stringify(horo);
+      var sd=JSON.parse(mdata);
+      var content=sd[zodiac][userGender];
+      document.getElementById("zodiac-content").innerHTML=content;
+    }
+}
+</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="./index.html">Know About Yourself</a>
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./privacy-policy.html">Privacy Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./know.html">Know More</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav> -->
+    <div id="particles-js">
+    </div>
+<!-- particles.js container -->
+<div class="welcome">
+  <div class="form-block">
+    <div class="logo">Know About Yourself</div>
+    <form name="reg">
+  <div class="form-group" style="margin-top:10%">
+    <label for="name">Enter your name</label>
+    <input type="text" class="form-control" id="name"  name="name"placeholder="Enter name here" required>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optradio" value="male">Male
+    </label>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optradio" value="female">Female
+    </label>
+  </div>
+  <label class="mr-sm-2"  style="margin-top:5%"for="inlineFormCustomSelect">Select zodiac sign</label>
+     <select class="custom-select mr-sm-2" name="zodiac"id="inlineFormCustomSelect">
+       <option selected>Select</option>
+       <option value="0">Aries(21Mar ~ 20Apr)</option>
+       <option value="1">Taurus(21Apr ~ 20May)</option>
+       <option value="2">Gemini(21May ~ 20Jun)</option>
+       <option value="3">Cancer(21June ~ 22Jul)</option>
+       <option value="4">Leo(23Jul ~ 22Aug)</option>
+       <option value="5">Virgo(23Aug ~ 22Sep)</option>
+       <option value="6">Libra(23Sep ~ 22Oct)</option>
+       <option value="7">Scorpio(23Oct ~ 22Nov)</option>
+       <option value="8">Sagittarus(23Nov ~ 21Dec)</option>
+       <option value="9">Capricorn(22Dec ~ 19Jan)</option>
+       <option value="10">Aquarius(20Jan ~ 19Feb)</option>
+       <option value="11">Pisces(20Feb ~ 20Mar)</option>
+     </select>
+  <a style="background-color:white;color:black;margin-top:2%;border-color:white"id="form-submit" class="btn" onclick="formSubmit()">Submit</a>
+</form>
+  </div>
+  <!-- Footer -->
+  <div id="zodiac-content">
+  </div>
+  <footer class="page-footer font-small blue pt-4">
+    <!-- Footer Links -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Privacy Policy:
+      <!-- © 2020 Copyright:
+      <a href=""> MDBootstrap.com</a> -->
+      <a href="./privacy-policy.html">Read it here</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>
+<!-- scripts -->
+<script src="particles.js"></script>
+<script src="js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script data-ad-client="ca-pub-6467687460711292" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</body>
+</html>
