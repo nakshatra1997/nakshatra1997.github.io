@@ -98,7 +98,13 @@ function formSubmit(){
       Object.keys(content).forEach(function(key) {
 
   result+="<h4>"+key+"</h4><br><p align='justify'>"+content[key]+"</p><br>";
+
 })
+if(language.value==0){
+  result+="<br><a href='./know.html'>अपनी राशि के सामान्य लक्षणों को जानने के लिए यहां क्लिक करें</a>";
+}else{
+  result+="<br><a href='./know.html'>Click here to know common characteristics of your zodiac sign</a>";
+}
 
       document.getElementById("zodiac-content").innerHTML=result;
     }
