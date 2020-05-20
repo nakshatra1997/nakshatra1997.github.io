@@ -52,7 +52,7 @@ function showForm(){
 	var query = parser.search.substring(1);
 	var vars = query.split('&');
   if(vars.length==1)
-  document.getElementById("form-show").style.display="block";
+  document.getElementById("form-show").style.display="initial";
   else{
     for (var i = 0; i < vars.length; i++) {
       var pair = vars[i].split('=');
@@ -172,16 +172,16 @@ function formSubmit(){
     </div>
 
 <!-- particles.js container -->
-<div class="welcome" style="margin:auto;overflow:inherit">
+<div class="welcome" style="overflow:inherit">
 
   <div class="form-block" id="form-show"style="display:none">
 <div class="logo"  id="title-tag">Zodiac's Common Characteristics</div>
     <form name="reg">
   <label class="mr-sm-2" id="inlineFormCustomSelectLabel" style="margin-top:5%"for="inlineFormCustomSelectLang">Choose Language</label>
      <select class="custom-select mr-sm-2" name="lang" id="inlineFormCustomSelectLang" onchange="change_dropdown(this.value)">
-       <option selected>Select</option>
+       <option >Select</option>
        <option value="0">हिन्दी</option>
-       <option value="1">English</option>
+       <option selected value="1">English</option>
      </select>
 
   <label class="mr-sm-2" id="inlineFormCustomSelectEnglish" style="margin-top:5%"for="inlineFormCustomSelect">Select zodiac sign</label>
