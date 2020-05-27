@@ -24,6 +24,9 @@
 <script type="text/javascript" src="hindi.json"></script>
 <script type="text/javascript" src="english.json"></script>
 <script>
+window.onload=function(){
+  change_dropdown(1);
+};
 
 function change_dropdown(value){
   var lang=document.forms["reg"]["lang"].value;
@@ -43,9 +46,9 @@ function change_dropdown(value){
       document.getElementById("inlineFormCustomSelectHindi").style.display="none";
       document.getElementById("title-tag").innerHTML="Know Your Daily Horoscope";
     }
-
-
 }
+
+
 function formSubmit(){
 
   var language=document.forms["reg"]["lang"];
