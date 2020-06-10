@@ -55,6 +55,7 @@ function showForm(){
   if(vars.length==1)
   document.getElementById("form-show").style.display="initial";
   else{
+    console.log("i am here");
     for (var i = 0; i < vars.length; i++) {
       var pair = vars[i].split('=');
       params[pair[0]] = decodeURIComponent(pair[1]);
@@ -179,7 +180,7 @@ function formSubmit(){
 <!-- particles.js container -->
 <div class="welcome">
 
-  <div class="form-block"style="display:none">
+  <div class="form-block" id="form-show"style="display:none">
     <div class="logo"  id="title-tag">Know Your Weekly Horoscope</div>
     <form name="reg">
 
