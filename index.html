@@ -84,26 +84,32 @@ function formSubmit(){
     if(result){
       var zodiacs;
       var mdata;
+      var result="";
+      var sd;
+      var content;
       if(language.value==0){
       mdata=JSON.stringify(horo_hindi);
       zodiacs=$("#inlineFormCustomSelectHindi").val();
+      console.log(JSON.parse(mdata)[0][zodiacs]);
+      result+="<br><p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[1]+
+      "</p>"+"<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[2]
+      +"</p>"+"<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[3]+"</p>"+
+      "<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[4]+"</p>"+
+      "<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[5]+"</p><br>";
       }
 
       else {
         mdata=JSON.stringify(horo_english);
         zodiacs=$("#inlineFormCustomEnglish").val();
+        sd=JSON.parse(mdata);
+        content=sd[0][zodiacs];
+        Object.keys(content).forEach(function(key) {
+    result+="<h4>"+key+"</h4><br><p align='justify'>"+content[key]+"</p><br>";
+
+  })
       }
-      var result="";
-      var sd=JSON.parse(mdata);
-
-      var content=sd[0][zodiacs];
 
 
-      Object.keys(content).forEach(function(key) {
-
-  result+="<h4>"+key+"</h4><br><p align='justify'>"+content[key]+"</p><br>";
-
-})
 if(language.value==0){
   result+="<br><a href='./know.html?l=0&r="+zodiacs+"'>अपनी राशि के सामान्य लक्षणों को जानने के लिए यहां क्लिक करें</a><br><br><br><a href='./weekly-index.html?l=0&r="+zodiacs+"'>साप्ताहिक राशिफल जानने के लिए यहां क्लिक करें..!!</a><br><br><a href='./ratna-rxyz.html'>जानिए राशि अनुसार रत्नों के बारे में</a><br><br>";
 }else{
