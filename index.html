@@ -111,9 +111,9 @@ function formSubmit(){
 
 
 if(language.value==0){
-  result+="<br><a class='btn btn-outline-primary' href='./know.html?l=0&r="+zodiacs+"'>अपनी राशि के सामान्य लक्षणों को जानने के लिए यहां क्लिक करें</a><br><br><a class='btn btn-outline-primary' href='./weekly-index.html?l=0&r="+zodiacs+"'>साप्ताहिक राशिफल जानने के लिए यहां क्लिक करें</a><br><br><a class='btn btn-outline-primary' href='./ratna-rxyz.html'>जानिए राशि अनुसार रत्नों के बारे में</a><br><br>";
+  result+="<br><a  href='./know.html?l=0&r="+zodiacs+"'>अपनी राशि के सामान्य लक्षणों को जानने के लिए यहां क्लिक करें</a><br><br><a  href='./weekly-index.html?l=0&r="+zodiacs+"'>साप्ताहिक राशिफल जानने के लिए यहां क्लिक करें</a><br><br><a href='./ratna-rxyz.html'>जानिए राशि अनुसार रत्नों के बारे में</a><br><br>";
 }else{
-  result+="<br><a class='btn btn-outline-primary' href='./know.html?l=1&r="+zodiacs+"'>Click here to know common characteristics of your zodiac sign</a><br><br><a class='btn btn-outline-primary' href='./weekly-index.html?l=1&r="+zodiacs+"'> Click here to know your weekly horoscope</a><br><br><a class='btn btn-outline-primary' href='./monthly-index.html?l=1&r="+zodiacs+"'> Click here to know your monthly horoscope</a><br><br><a class='btn btn-outline-primary' href='./ratna-rxyz.html'>Know your gemstone as per zodiac sign</a><br><br>";
+  result+="<br><a  href='./know.html?l=1&r="+zodiacs+"'>Click here to know common characteristics of your zodiac sign</a><br><br><a href='./weekly-index.html?l=1&r="+zodiacs+"'> Click here to know your weekly horoscope</a><br><br><a href='./monthly-index.html?l=1&r="+zodiacs+"'> Click here to know your monthly horoscope</a><br><br><a href='./ratna-rxyz.html'>Know your gemstone as per zodiac sign</a><br><br>";
 }
 
       document.getElementById("zodiac-content").innerHTML=result;
