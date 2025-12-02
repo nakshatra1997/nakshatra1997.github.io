@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Know everything about yourself</title>
+  <meta name="author" content="Prime Dev Group contact->primedevgroup@gmail.com">
+  <meta name="description" content="Know something about yourself.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><!-- <link rel="stylesheet" media="screen" href="css/style.css"> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166663465-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-166663465-1');
+</script>
+
+<script type="text/javascript" src="horo.json"></script>
+<script type="text/javascript" src="hindi.json"></script>
+<script type="text/javascript" src="english.json"></script>
+<script>
+window.onload=function(){
+  change_dropdown(1);
+};
+
+function change_dropdown(value){
+  var lang=document.forms["reg"]["lang"].value;
+  if(lang==0){
+      document.getElementById("inlineFormCustomSelectLabel").innerHTML="भाषा चुनें";
+      document.getElementById("inlineFormCustomSelectEnglish").style.display="none";
+      document.getElementById("inlineFormCustomEnglish").style.display="none";
+      document.getElementById("inlineFormCustomSelectHindiLabel").style.display="block"
+      document.getElementById("inlineFormCustomSelectHindi").style.display="block";
+      document.getElementById("title-tag").innerHTML="जानिए अपना दैनिक राशिफल";
+
+    }else{
+      document.getElementById("inlineFormCustomSelectLabel").innerHTML="Choose your language";
+      document.getElementById("inlineFormCustomSelectEnglish").style.display="block";
+      document.getElementById("inlineFormCustomEnglish").style.display="block";
+      document.getElementById("inlineFormCustomSelectHindiLabel").style.display="none"
+      document.getElementById("inlineFormCustomSelectHindi").style.display="none";
+      document.getElementById("title-tag").innerHTML="Know Your Daily Horoscope";
+    }
+}
+
+
+function formSubmit(){
+
+  var language=document.forms["reg"]["lang"];
+  var zodiac;
+  if(language.value==0)
+  zodiac=document.forms["reg"]["zodiac_hindi"];
+  else {
+  zodiac=document.forms["reg"]["zodiac_eng"];
+  }
+  var result=true;
+  if(zodiac.value=="Select"){
+    window.alert("Please choose zodiac sign");
+    language.focus();
+    result=false;
+  }
+  if(zodiac.value=="चुनें"){
+    window.alert("अपनी राशि चुनें");
+    language.focus();
+    result=false;
+  }
+     if(language.value=="Select"){
+      window.alert("Please choose language");
+      language.focus();
+      result=false;
+    }
+
+    if(language.value=="चुनें"){
+      window.alert("अपनी भाषा चुनें");
+      language.focus();
+      result=false;
+    }
+
+    if(result){
+      var zodiacs;
+      var mdata;
+      var result="";
+      var sd;
+      var content;
+      if(language.value==0){
+      mdata=JSON.stringify(horo_hindi);
+      zodiacs=$("#inlineFormCustomSelectHindi").val();
+      console.log(JSON.parse(mdata)[0][zodiacs]);
+      result+="<br><p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[1]+
+      "</p>"+"<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[2]
+      +"</p>"+"<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[3]+"</p>"+
+      "<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[4]+"</p>"+
+      "<p align='justify'>"+JSON.parse(mdata)[0][zodiacs].split("\n")[5]+"</p><br>";
+      }
+
+      else {
+        mdata=JSON.stringify(horo_english);
+        zodiacs=$("#inlineFormCustomEnglish").val();
+        sd=JSON.parse(mdata);
+        content=sd[0][zodiacs];
+        Object.keys(content).forEach(function(key) {
+    result+="<h4>"+key+"</h4><br><p align='justify'>"+content[key]+"</p><br>";
+
+  })
+      }
+
+
+if(language.value==0){
+  result+="<br><a  href='./know.html?l=0&r="+zodiacs+"'>अपनी राशि के सामान्य लक्षणों को जानने के लिए यहां क्लिक करें</a><br><br><a  href='./weekly-index.html?l=0&r="+zodiacs+"'>साप्ताहिक राशिफल जानने के लिए यहां क्लिक करें</a><br><br><a href='./ratna-rxyz.html'>जानिए राशि अनुसार रत्नों के बारे में</a><br><br>";
+}else{
+  result+="<br><a  href='./know.html?l=1&r="+zodiacs+"'>Click here to know common characteristics of your zodiac sign</a><br><br><a href='./weekly-index.html?l=1&r="+zodiacs+"'> Click here to know your weekly horoscope</a><br><br><a href='./monthly-index.html?l=1&r="+zodiacs+"'> Click here to know your monthly horoscope</a><br><br><a href='./ratna-rxyz.html'>Know your gemstone as per zodiac sign</a><br><br>";
+}
+
+      document.getElementById("zodiac-content").innerHTML=result;
+    }
+    document.getElementById("zodiac-content").scrollIntoView();
+
+}
+</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Know About Yourself</a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./privacy-policy.html">Privacy Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./know.html">Know More</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./ratna-rxyz.html">Rashi Ratna/ Zodiac Gemstones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./weekly-index.html">Weekly Horoscope</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="particles-js">
+    </div>
+
+<!-- particles.js container -->
+<div class="welcome">
+
+  <div class="form-block">
+    <div class="logo"  id="title-tag">Know Your Daily Horoscope</div>
+    <form name="reg">
+
+  <label class="mr-sm-2" id="inlineFormCustomSelectLabel" style="margin-top:5%"for="inlineFormCustomSelectLang">Choose Language</label>
+     <select class="custom-select mr-sm-2" name="lang" id="inlineFormCustomSelectLang" onchange="change_dropdown(this.value)">
+       <option >Select</option>
+       <option value="0">हिन्दी</option>
+       <option selected value="1">English</option>
+     </select>
+
+  <label class="mr-sm-2" id="inlineFormCustomSelectEnglish" style="margin-top:5%"for="inlineFormCustomSelect">Select zodiac sign</label>
+     <select class="custom-select mr-sm-2" name="zodiac_eng"id="inlineFormCustomEnglish" class="inlineFormCustomSelectEnglish">
+       <option selected>Select</option>
+       <option value="0">Aries</option>
+       <option value="1">Taurus</option>
+       <option value="2">Gemini</option>
+       <option value="3">Cancer</option>
+       <option value="4">Leo</option>
+       <option value="5">Virgo</option>
+       <option value="6">Libra</option>
+       <option value="7">Scorpio</option>
+       <option value="8">Sagittarus</option>
+       <option value="9">Capricorn</option>
+       <option value="10">Aquarius</option>
+       <option value="11">Pisces</option>
+     </select>
+
+     <label class="mr-sm-2" id="inlineFormCustomSelectHindiLabel" style="margin-top:5%;display:none"for="inlineFormCustomSelectHindi">अपनी राशि चुनें</label>
+        <select class="custom-select mr-sm-2" style="display:none"name="zodiac_hindi"id="inlineFormCustomSelectHindi" class="inlineFormCustomSelectHindi">
+          <option selected>चुनें</option>
+          <option value="0">मेष</option>
+          <option value="1">वृषभ</option>
+          <option value="2">मिथुन</option>
+          <option value="3">कर्क</option>
+          <option value="4">सिंह</option>
+          <option value="5">कन्या</option>
+          <option value="6">तुला</option>
+          <option value="7">वृश्चिक</option>
+          <option value="8">धनु</option>
+          <option value="9">मकर</option>
+          <option value="10">कुंभ</option>
+          <option value="11">मीन</option>
+        </select>
+
+
+  <a style="background-color:white;color:black;margin-top:2%;border-color:white"id="form-submit" class="btn" onclick="formSubmit()">Submit</a>
+</form>
+
+  </div>
+  <!-- Footer -->
+  <div id="zodiac-content" style="margin-top:2em">
+  </div>
+
+  <footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Privacy Policy:
+      <!-- © 2020 Copyright:
+      <a href=""> MDBootstrap.com</a> -->
+      <a href="./privacy-policy.html">Read it here</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+  <!-- Footer -->
+</div>
+
+<!-- scripts -->
+<script src="particles.js"></script>
+<script src="js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
