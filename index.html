@@ -4,171 +4,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astromage</title>
-    <meta name="description" content="Discover your daily cosmic guidance with Astromage.">
-
-    <!-- Google Fonts -->
+    <meta name="description" content="Portfolio of Nakshtra Pradhan - Software Engineer">
+    <title>Nakshtra Pradhan | Portfolio</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="themes.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="particles-js"></div>
 
-    <main class="app-container">
-        <header class="hero">
-            <h1 class="title">Astromage</h1>
-            <p class="subtitle">Unlock the secrets of the cosmos</p>
-        </header>
-
-        <section class="zodiac-grid" id="zodiac-grid">
-            <!-- Zodiac signs will be populated by JS -->
-        </section>
-
-        <!-- Love Compatibility Calculator Link -->
-        <a href="love-calculator.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">💕</div>
-            <h2 class="calculator-link-title">Love Compatibility Calculator</h2>
-            <p class="calculator-link-subtitle">Discover your cosmic connection →</p>
-        </a>
-
-        <!-- Crush Compatibility Link -->
-        <a href="crush-compatibility.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">💘</div>
-            <h2 class="calculator-link-title">Crush Compatibility Checker</h2>
-            <p class="calculator-link-subtitle">Test your crush anonymously 🤫 →</p>
-        </a>
-
-        <!-- Birth Chart Calculator Link -->
-        <a href="birth-chart.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">✨</div>
-            <h2 class="calculator-link-title">Birth Chart Calculator</h2>
-            <p class="calculator-link-subtitle">Reveal your Sun, Moon & Rising →</p>
-        </a>
-
-        <!-- Lucky Number Generator Link -->
-        <a href="lucky-numbers.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">🍀</div>
-            <h2 class="calculator-link-title">Lucky Number Generator</h2>
-            <p class="calculator-link-subtitle">Discover your daily lucky numbers ✨ →</p>
-        </a>
-
-        <!-- Moon Phase Tracker Link -->
-        <a href="moon-phase.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">🌙</div>
-            <h2 class="calculator-link-title">Moon Phase Tracker</h2>
-            <p class="calculator-link-subtitle">Discover tonight's lunar energy 🌟 →</p>
-        </a>
-
-
-
-        <!-- Relationship Timeline Link -->
-        <a href="relationship-timeline.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">⏳</div>
-            <h2 class="calculator-link-title">Relationship Timeline</h2>
-            <p class="calculator-link-subtitle">Track your cosmic milestones 📅 →</p>
-        </a>
-
-        <!-- Biorhythm Calculator Link -->
-        <a href="biorhythm.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">📈</div>
-            <h2 class="calculator-link-title">Biorhythm Calculator</h2>
-            <p class="calculator-link-subtitle">Track your energy cycles 🌊 →</p>
-        </a>
-
-        <!-- Compatibility Matrix Link -->
-        <a href="compatibility-matrix.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">🧩</div>
-            <h2 class="calculator-link-title">Compatibility Matrix</h2>
-            <p class="calculator-link-subtitle">Explore all zodiac matches 📊 →</p>
-        </a>
-
-        <!-- Compare with Friends Link -->
-        <a href="compare-friends.html" class="calculator-link-card glass-panel">
-            <div class="calculator-icon">👯</div>
-            <h2 class="calculator-link-title">Compare with Friends</h2>
-            <p class="calculator-link-subtitle">Side-by-side horoscope check ⚡ →</p>
-        </a>
-
-        <div id="horoscope-modal" class="modal hidden">
-            <div class="modal-content glass-panel">
-                <button class="close-btn" aria-label="Close">&times;</button>
-                <div class="modal-header">
-                    <div class="sign-icon" id="modal-icon"></div>
-                    <h2 id="modal-sign-name"></h2>
-                    <p class="date-range" id="modal-date-range"></p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">NP<span style="color:var(--accent-primary)">.</span></div>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <div class="modal-tabs">
-                    <button class="tab-btn active" data-tab="forecast">Daily Forecast</button>
-                    <button class="tab-btn" data-tab="profile">Personality Profile</button>
-                    <button class="tab-btn" data-tab="yearly">Yearly Forecast 2025</button>
+                <div class="nav-links" id="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="readings.html">Readings</a>
+                    <a href="#contact" class="btn btn-sm">Let's Connect</a>
                 </div>
-                <div class="modal-body">
-                    <div id="tab-forecast" class="tab-content active">
-                        <p id="modal-horoscope-text"></p>
-                    </div>
-                    <div id="tab-profile" class="tab-content">
-                        <div class="profile-container">
-                            <div class="profile-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">Element</span>
-                                    <span id="modal-element" class="meta-value"></span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">Ruling Planet</span>
-                                    <span id="modal-planet" class="meta-value"></span>
-                                </div>
-                            </div>
-                            <div class="profile-keywords" id="modal-keywords"></div>
-                            <p id="modal-traits" class="profile-traits"></p>
+            </nav>
+        </div>
+    </header>
 
-                            <div class="profile-section">
-                                <h4>Strengths</h4>
-                                <ul id="modal-strengths" class="trait-list"></ul>
-                            </div>
-
-                            <div class="profile-section">
-                                <h4>Weaknesses</h4>
-                                <ul id="modal-weaknesses" class="trait-list"></ul>
-                            </div>
-
-                            <div class="profile-section">
-                                <h4>Love Compatibility</h4>
-                                <p id="modal-compatibility" class="compatibility-text"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab-yearly" class="tab-content">
-                        <div class="yearly-forecast-container">
-                            <p id="modal-yearly-text" class="yearly-text"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Share Container -->
-                <div class="share-container">
-                    <p class="share-title">Share your horoscope</p>
-                    <div class="share-buttons">
-                        <button class="share-btn twitter" id="share-twitter">🐦 Twitter</button>
-                        <button class="share-btn facebook" id="share-facebook">📘 Facebook</button>
-                        <button class="share-btn download" id="share-download">📥 Download</button>
-                        <button class="share-btn copy" id="share-copy">📋 Copy</button>
-                    </div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h4>Software Engineer</h4>
+                <h1>Nakshtra Pradhan</h1>
+                <p>Building scalable backend systems, robust microservices, and high-performance applications that solve
+                    real-world problems.</p>
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn">View My Work <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
         </div>
-    </main>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="horoscope_data.js"></script>
-    <script src="share-utils.js"></script>
-    <script src="theme.js"></script>
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title"><span>About Me</span></h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>I am a detail-oriented <strong>Software Engineer</strong> currently driving innovation at
+                        <strong>Goldman Sachs</strong> in Bangalore. My expertise lies in architecting resilient systems
+                        using Java, Spring Boot, and Cloud technologies.</p>
+                    <br>
+                    <p>My proactive approach has led to significant system optimizations at previous roles in
+                        <strong>Morgan Stanley</strong> and <strong>Infosys</strong>, including 80% speed boosts and
+                        major migrations. I thrive in environments that challenge me to continuously learn and deliver
+                        excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title"><span>Experience</span></h2>
+            <div class="timeline">
+
+                <!-- Experience 1 -->
+                <div class="timeline-item left fade-in">
+                    <div class="content-box">
+                        <h3>Goldman Sachs</h3>
+                        <h4>Software Engineer</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Present | Bangalore, India</span>
+                        <ul>
+                            <li>Designing and developing scalable financial systems to handle complex transaction flows.
+                            </li>
+                            <li>Engineering high-performance backend services ensuring low latency and high
+                                availability.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item right fade-in">
+                    <div class="content-box">
+                        <h3>Morgan Stanley</h3>
+                        <h4>Software Engineer III</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Oct 2024 - Nov 2024 | Mumbai</span>
+                        <ul>
+                            <li>Designed a risk analytics platform from scratch using Azure Spring Apps & Redis.</li>
+                            <li>Achieved 80% faster calculation speeds; integrated Snowflake for efficient data
+                                warehousing.</li>
+                            <li>Optimized high-volume data archival processing 150M+ rows daily.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="timeline-item left fade-in">
+                    <div class="content-box">
+                        <h3>Morgan Stanley</h3>
+                        <h4>Senior Associate Technology</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Feb 2022 - Sep 2024 | Mumbai</span>
+                        <ul>
+                            <li>Migrated from REST to gRPC, reducing payload size by 60% and latency by 40%.</li>
+                            <li>Implemented comprehensive observability with Loki, Prometheus, and Grafana.</li>
+                            <li>Led the migration from Ivy to Gradle, boosting test coverage to 60%.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item right fade-in">
+                    <div class="content-box">
+                        <h3>Infosys</h3>
+                        <h4>Senior Systems Engineer</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Oct 2019 - Dec 2021 | Chandigarh</span>
+                        <ul>
+                            <li>Developed robust Java Spring applications serving critical RESTful APIs.</li>
+                            <li>Enhanced system reliability by 30% through proactive issue diagnosis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title"><span>Technical Expertise</span></h2>
+            <div class="skills-grid fade-in">
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-code" style="color:var(--accent-primary)"></i> Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group" style="color:var(--accent-primary)"></i> Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">gRPC</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Kafka</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud" style="color:var(--accent-primary)"></i> Cloud & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">IBM Db2</span>
+                        <span class="skill-tag">Sybase</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools" style="color:var(--accent-primary)"></i> Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">IntelliJ IDEA</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" style="padding: 6rem 0; background: var(--bg-color);">
+        <div class="container">
+            <h2 class="section-title"><span>Education</span></h2>
+            <div class="education-card fade-in">
+                <i class="fas fa-graduation-cap"
+                    style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 1.5rem;"></i>
+                <h3>Dr. APJ Abdul Kalam Technical University, AKGEC</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">B.Tech, Information Technology</p>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 1rem 0;">80.52%</div>
+                <span style="font-size: 0.9rem; color: var(--text-secondary); opacity: 0.7;">July 2015 - July
+                    2019</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem; color: var(--text-primary);">Let's Work Together</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nakshtra-pradhan/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:nakshatrapradhan@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p style="color: var(--text-secondary);">&copy; 2025 Nakshtra Pradhan. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 
