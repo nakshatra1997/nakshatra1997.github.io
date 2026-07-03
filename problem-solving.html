@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Ultimate Problem Solving Framework | Nakshtra Pradhan</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #0f1b33;
+      --text: #e7eefc;
+      --muted: #b7c6e6;
+      --border: rgba(255, 255, 255, .12);
+      --accent: #7aa2ff;
+      --codebg: #081022;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% 0%, rgba(122, 162, 255, .25), transparent 55%),
+        radial-gradient(900px 500px at 90% 20%, rgba(126, 231, 135, .12), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 42px 18px 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(26px, 3.6vw, 40px);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 10px auto 0;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 18px 70px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin: 18px 0;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    h4 {
+      margin: 12px 0 6px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 10px 0;
+      color: var(--text);
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 6px 0;
+      color: var(--text);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 6px 0 0;
+      background: rgba(0, 0, 0, .2);
+    }
+
+    pre {
+      background: var(--codebg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      overflow: auto;
+      margin: 12px 0;
+      color: #eaf1ff;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 860px) {
+      .grid.two {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid.three {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-top: 10px;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .table th {
+      background: rgba(255, 255, 255, .06);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 14px 14px 14px 16px;
+      background: rgba(122, 162, 255, .12);
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    .callout.warning {
+      border-left-color: #ff9800;
+      background: rgba(255, 152, 0, 0.12);
+    }
+
+    .callout.success {
+      border-left-color: #4caf50;
+      background: rgba(76, 175, 80, 0.12);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 22px 18px 40px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15, 27, 51, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      margin-left: 20px;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Mermaid Flowchart Enhancements */
+    .mermaid-container {
+      overflow-x: auto;
+      background: var(--codebg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    
+    .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mermaid svg {
+      max-width: none !important;
+      min-width: 900px !important;
+      height: auto;
+    }
+  </style>
+
+  <!-- Mermaid.js for Flowcharts -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#0f1b33',
+        primaryTextColor: '#e7eefc',
+        primaryBorderColor: '#7aa2ff',
+        lineColor: '#b7c6e6',
+        secondaryColor: '#1a2333',
+        tertiaryColor: '#1a2333'
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">NP.</a>
+    <div>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="readings.html" class="nav-link">Readings</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>The Ultimate Problem Solving Framework</h1>
+    <p>
+      A repeatable thinking process for coding interviews. Learn how to understand, break down, and optimize problems systematically.
+    </p>
+    <div>
+      <span class="badge">Problem Solving</span>
+      <span class="badge">Interviews</span>
+      <span class="badge">Algorithms</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>Goal</h2>
+      <p>The objective is not to memorize hundreds of solutions, but to build a <strong>repeatable thinking process</strong> so that when you see a new problem, you know:</p>
+      <ul>
+        <li>How to understand it</li>
+        <li>How to break it down</li>
+        <li>How to identify patterns</li>
+        <li>How to move from brute force to optimal</li>
+        <li>How to code with fewer bugs</li>
+      </ul>
+      <div class="callout success">
+        <strong>Remember:</strong> A slow correct solution is better than a fast wrong solution.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>The Framework Overview</h2>
+      <p>Here is a quick visual cheat sheet of the entire problem-solving process (scroll horizontally to view full size):</p>
+      <div class="mermaid-container">
+        <div class="mermaid">
+          graph TD
+              A[Step 0: Identify Goal<br>Exist / Count / Best / Generate] --> B[Step 1 & 2: Read & Trace<br>Extract Constraints, Solve Manually]
+              B --> C{Pattern Identified?}
+              C -->|Yes| D[Step 3: Map to Pattern<br>HashMap, DP, Graph, etc.]
+              C -->|No| E[Stuck? Draw it, Reduce n, Change Perspective]
+              E --> B
+              D --> F[Step 4 & 5: Brute Force & Optimize<br>Find & Remove Repeated Work]
+              F --> G[Step 6: Validate Complexity<br>Check constraints vs O-time]
+              G --> H[Step 7 & 8: Define Invariant & Code<br>Handle edge cases first]
+              H --> I[Step 9: Test Before Submit<br>Dry run with edge cases]
+              I --> J[Post Problem Review<br>Document mistakes & triggers]
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Step 0 — Identify What the Problem Wants</h2>
+      <p>Before thinking about algorithms, identify the goal. Most problems ask for one of four things:</p>
+      <div class="grid two">
+        <div>
+          <h3>1. Find Existence</h3>
+          <p><em>"Does something exist?"</em> (e.g., Target sum, valid path)</p>
+          <p class="hint"><strong>Patterns:</strong> HashSet/HashMap, DFS/BFS, Binary Search, Union Find</p>
+        </div>
+        <div>
+          <h3>2. Find Count</h3>
+          <p><em>"How many ways?"</em> (e.g., Count paths, subsets, modulo 10^9+7)</p>
+          <p class="hint"><strong>Patterns:</strong> Dynamic Programming, Prefix Sum, Combinatorics</p>
+        </div>
+        <div>
+          <h3>3. Find Best Answer</h3>
+          <p><em>"Find minimum / maximum / longest / shortest"</em></p>
+          <p class="hint"><strong>Patterns:</strong> DP, Greedy, Heap, Sliding Window, Binary Search on Answer</p>
+        </div>
+        <div>
+          <h3>4. Generate All Results</h3>
+          <p><em>"Return all combinations, permutations, or paths"</em></p>
+          <p class="hint"><strong>Patterns:</strong> Backtracking, DFS</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Step 1 & 2 — Read and Trace</h2>
+      
+      <h3>Read Twice</h3>
+      <ul>
+        <li><strong>First Read:</strong> Understand the story. Ask: <em>"What exactly needs to be returned?"</em> (Don't think about code yet).</li>
+        <li><strong>Second Read:</strong> Extract Input, Output, and Constraints.
+          <ul>
+            <li>Is size <code>10^5</code>? O(n²) probably fails.</li>
+            <li>Can input be empty? Negative? Duplicates? Sorted?</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Solve Examples Manually</h3>
+      <p>Take the sample input and trace every step manually. Create your own tests:</p>
+      <ul>
+        <li><strong>Small Case:</strong> <code>[]</code> or <code>[1]</code></li>
+        <li><strong>Normal Case:</strong> <code>[1, 2, 3, 4]</code></li>
+        <li><strong>Breaking Case:</strong> Duplicates, negatives, large values.</li>
+      </ul>
+      <div class="callout warning">
+        If you cannot solve it manually, <strong>do not code yet.</strong>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Step 3 — Identify the Pattern</h2>
+      <p>Look for signals in the problem description to map it to a known pattern.</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data Structure / Domain</th>
+            <th>Signal</th>
+            <th>Likely Pattern</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Arrays / Strings</strong></td>
+            <td>Need fast lookup ("Have I seen this?")</td>
+            <td>HashMap / HashSet</td>
+          </tr>
+          <tr>
+            <td><strong>Arrays / Strings</strong></td>
+            <td>Contiguous subarray (longest, shortest, window)</td>
+            <td>Sliding Window</td>
+          </tr>
+          <tr>
+            <td><strong>Arrays / Strings</strong></td>
+            <td>Sorted Array</td>
+            <td>Binary Search, Two Pointers</td>
+          </tr>
+          <tr>
+            <td><strong>Trees</strong></td>
+            <td>Explore nodes / Level order</td>
+            <td>DFS / BFS</td>
+          </tr>
+          <tr>
+            <td><strong>Graphs</strong></td>
+            <td>Shortest path / Connected components</td>
+            <td>BFS, Dijkstra / DFS, Union Find</td>
+          </tr>
+          <tr>
+            <td><strong>Top K / Choices / Opt.</strong></td>
+            <td>Largest K / Generate all / Maximum, Minimum</td>
+            <td>Heap / Backtracking / DP or Greedy</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Step 4 & 5 — Brute Force and Optimize</h2>
+      <p>Never jump directly to clever solutions. Ask: <em>"If performance did not matter, how would I solve this?"</em></p>
+      <div class="callout">
+        Now ask the important question: <strong>"What work am I repeating?"</strong> That question creates optimization.
+      </div>
+      
+      <h3>5 Common Optimization Transformations</h3>
+      <div class="grid two">
+        <div>
+          <h4>1. Searching Again and Again</h4>
+          <p>O(n²) nested loop searching → Use a <strong>HashMap</strong> for O(n).</p>
+        </div>
+        <div>
+          <h4>2. Calculating Again and Again</h4>
+          <p>Same result calculated multiple times → Use <strong>Memoization/DP</strong>.</p>
+        </div>
+        <div>
+          <h4>3. Checking Every Range</h4>
+          <p>Generating every subarray O(n²) → Maintain a changing <strong>Sliding Window</strong> for O(n).</p>
+        </div>
+        <div>
+          <h4>4. Repeated Minimum / Maximum</h4>
+          <p>Need top K or median → Maintain a <strong>Heap</strong>.</p>
+        </div>
+        <div>
+          <h4>5. Answer Space is Searchable</h4>
+          <p>"If X works, does every bigger value work?" → <strong>Binary Search on Answer</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Step 6 — Complexity Validation</h2>
+      <p>Before coding, verify if your target complexity works with the given constraints (n).</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Constraint (n)</th>
+            <th>Target Time Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>n &le; 10</td><td>O(n!)</td></tr>
+          <tr><td>n &le; 20</td><td>O(2^n)</td></tr>
+          <tr><td>n &le; 1,000</td><td>O(n²)</td></tr>
+          <tr><td>n &le; 100,000</td><td>O(n log n) or O(n)</td></tr>
+          <tr><td>n &ge; 1,000,000</td><td>O(n) or better</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Step 7 to 9 — Execute and Verify</h2>
+      
+      <h3>7. Define Your Invariant</h3>
+      <p>Experts always know what their algorithm maintains. If you cannot define the invariant, your solution is unclear.</p>
+      <ul>
+        <li><em>Sliding Window:</em> "My window always contains valid elements."</li>
+        <li><em>HashMap:</em> "My map contains previously seen values."</li>
+        <li><em>Heap:</em> "My heap always stores the best K elements."</li>
+        <li><em>Binary Search:</em> "Left side impossible, right side possible."</li>
+      </ul>
+
+      <h3>8. Code the Solution</h3>
+      <p>Follow clear thinking order: <br><strong>1.</strong> Handle edge cases (empty, null) → <strong>2.</strong> Write main logic → <strong>3.</strong> Return answer.</p>
+
+      <h3>9. Test Before Submitting</h3>
+      <p>Always test against: Given examples, empty input, one element, duplicates, negatives, sorted/reverse sorted, large inputs.</p>
+    </section>
+    
+    <section class="card">
+      <h2>When Completely Stuck</h2>
+      <div class="grid two">
+        <div>
+          <h3>1. Draw It</h3>
+          <p>Draw boxes for arrays, nodes for trees, circles for graphs. Visualization reveals patterns.</p>
+        </div>
+        <div>
+          <h3>2. Reduce the Problem</h3>
+          <p>Solve for n=1, n=2, n=3, then generalize.</p>
+        </div>
+        <div>
+          <h3>3. Change Perspective</h3>
+          <p>Instead of "For every start", try "For every end". Instead of "For every element", try "For every pair".</p>
+        </div>
+        <div>
+          <h3>4. Re-read Constraints</h3>
+          <p>Constraints are hints. Small n = brute force allowed. Modulo = likely DP or counting.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Post Problem Review</h2>
+      <p>Growth happens after solving. Maintain notes for each problem answering:</p>
+      <pre><code>Problem: [Name]
+Pattern: [Identified pattern]
+First Approach: [Brute force thought process]
+Optimized Approach: [How you got there]
+Mistake: [Bugs or logic flaws]
+Trigger I missed: [The hint in the problem]
+Learning: [Takeaway]</code></pre>
+      <p class="hint">After 100 problems, this becomes instinct.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Nakshtra Pradhan. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>
