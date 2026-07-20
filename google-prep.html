@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google LeetCode Master Guide</title>
+    <meta name="description" content="A comprehensive, curated, one-stop guide to mastering Google LeetCode interview patterns.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="google-prep.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">G</span>
+                    <h1>Google Prep</h1>
+                </div>
+                <p class="subtitle">Master Guide</p>
+                
+                <div class="progress-overview">
+                    <div class="progress-text">
+                        <span>Overall Progress</span>
+                        <span id="overall-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overall-progress-bar"></div>
+                    </div>
+                    <div class="progress-counts">
+                        <span id="completed-count">0</span> / <span id="total-count">0</span> Done
+                    </div>
+                </div>
+            </div>
+
+            <nav class="category-nav" id="category-nav">
+                <!-- Categories will be dynamically injected here -->
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <div class="header-info">
+                    <h2 id="current-category-title">All Patterns</h2>
+                    <p id="current-category-desc">Select a category from the sidebar or view all carefully curated questions.</p>
+                </div>
+                <div class="header-actions">
+                    <button id="reset-progress-btn" class="secondary-btn">Reset Progress</button>
+                </div>
+            </header>
+
+            <div class="questions-container" id="questions-container">
+                <!-- Question cards will be dynamically injected here -->
+            </div>
+        </main>
+        
+        <!-- Mobile Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </div>
+
+    <script src="google-prep.js"></script>
+</body>
+</html>

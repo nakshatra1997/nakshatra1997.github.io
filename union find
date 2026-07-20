@@ -1,0 +1,511 @@
+# Union Find (Disjoint Set Union - DSU) Complete Interview Guide
+
+## 1. What is Union Find?
+
+Union Find (DSU) is a data structure used to manage groups of connected elements.
+
+It efficiently answers two questions:
+
+1. Are two elements part of the same group?
+2. Can we merge two different groups?
+
+Core operations:
+
+Find:
+
+* Finds the leader/representative of a group.
+
+Union:
+
+* Combines two different groups.
+
+Example:
+
+Initially:
+
+0   1   2   3   4
+
+Every element is separate.
+
+After union(0,1):
+
+0-1     2     3     4
+
+After union(1,2):
+
+0-1-2     3     4
+
+Now:
+
+find(0) == find(2)
+
+They belong to the same component.
+
+---
+
+## 2. Standard Union Find Template (C++)
+
+class DSU {
+
+```
+vector<int> parent;
+vector<int> size;
+```
+
+public:
+
+```
+DSU(int n){
+
+    parent.resize(n);
+    size.assign(n,1);
+
+    for(int i=0;i<n;i++){
+        parent[i]=i;
+    }
+}
+
+
+int find(int x){
+
+    if(parent[x]==x)
+        return x;
+
+    return parent[x]=find(parent[x]);
+}
+
+
+bool unite(int a,int b){
+
+    int pa=find(a);
+    int pb=find(b);
+
+    if(pa==pb)
+        return false;
+
+
+    if(size[pa]<size[pb])
+        swap(pa,pb);
+
+
+    parent[pb]=pa;
+    size[pa]+=size[pb];
+
+    return true;
+}
+```
+
+};
+
+Complexity:
+
+Find: O(α(n))
+Union: O(α(n))
+
+Practically constant time.
+
+==================================================
+
+WHEN TO THINK ABOUT UNION FIND?
+
+Ask:
+
+"Can I represent things as nodes?"
+
+and
+
+"Am I only merging groups or checking if two things belong together?"
+
+If yes → Union Find
+
+==================================================
+
+PATTERN 1:
+CONNECTED COMPONENTS
+
+Problem Statement Type:
+
+Find:
+
+* Number of groups
+* Number of networks
+* Number of provinces
+* Friend circles
+
+Example:
+
+Edges:
+
+0-1
+1-2
+3-4
+
+Initially:
+
+0 1 2 3 4
+
+Components = 5
+
+Process:
+
+union(0,1)
+components--
+
+union(1,2)
+components--
+
+union(3,4)
+components--
+
+Final:
+
+0-1-2     3-4
+
+Answer = 2 components
+
+Common Problems:
+
+* Number of Provinces
+* Connected Components in Graph
+* Friend Circles
+
+==================================================
+
+PATTERN 2:
+CYCLE DETECTION IN UNDIRECTED GRAPH
+
+Idea:
+
+If two nodes already have the same parent,
+adding an edge between them creates a cycle.
+
+Example:
+
+Edges:
+
+0-1
+1-2
+2-0
+
+Process:
+
+union(0,1)
+
+union(1,2)
+
+For edge:
+
+2-0
+
+find(2)==find(0)
+
+Cycle detected.
+
+Common Problems:
+
+* Redundant Connection
+* Graph Valid Tree
+
+==================================================
+
+PATTERN 3:
+GRID / ISLAND PROBLEMS
+
+Idea:
+
+Convert matrix cells into DSU nodes.
+
+Conversion:
+
+row * columns + column
+
+Example:
+
+Grid:
+
+0 1 2
+
+3 4 5
+
+6 7 8
+
+Cell:
+
+row=1
+col=2
+
+index:
+
+1*3+2 = 5
+
+For every land cell:
+
+Check:
+
+* Up
+* Down
+* Left
+* Right
+
+Union neighbouring lands.
+
+Problems:
+
+* Number of Islands
+* Number of Islands II
+* Making a Large Island
+* Regions Cut By Slashes
+
+==================================================
+
+PATTERN 4:
+MERGING BY COMMON PROPERTY
+
+Used when objects share:
+
+* Email
+* Phone number
+* Attribute
+* Common identity
+
+Example:
+
+Person A:
+
+[a@gmail.com](mailto:a@gmail.com)
+[b@gmail.com](mailto:b@gmail.com)
+
+Person B:
+
+[b@gmail.com](mailto:b@gmail.com)
+[c@gmail.com](mailto:c@gmail.com)
+
+Common email exists:
+
+Union(A,B)
+
+Final group:
+
+a@gmail
+b@gmail
+c@gmail
+
+Problems:
+
+* Accounts Merge
+* Similar String Groups
+
+==================================================
+
+PATTERN 5:
+MINIMUM SPANNING TREE (KRUSKAL)
+
+Used for:
+
+Minimum cost to connect everything.
+
+Steps:
+
+1. Sort edges by weight.
+
+2. Pick smallest edge.
+
+3. Check:
+
+If nodes already connected:
+skip
+
+Else:
+union them
+add cost
+
+Example:
+
+A--10--B
+
+A--2---C
+
+C--1---B
+
+Pick:
+
+C-B (1)
+A-C (2)
+
+Skip A-B because it creates cycle.
+
+Problems:
+
+* Min Cost to Connect All Points
+* Connecting Cities With Minimum Cost
+
+==================================================
+
+PATTERN 6:
+EQUALITY / RELATIONSHIP PROBLEMS
+
+Example:
+
+Given:
+
+a == b
+b == c
+a != d
+
+Step 1:
+
+Union all equal elements.
+
+a-b-c
+
+Step 2:
+
+Check inequalities.
+
+If:
+
+find(a)==find(d)
+
+Invalid.
+
+Problems:
+
+* Satisfiability of Equality Equations
+
+==================================================
+
+PATTERN 7:
+SEQUENCE GROUPING
+
+Example:
+
+Longest Consecutive Sequence
+
+Input:
+
+100 4 200 1 3 2
+
+Create relationships:
+
+1-2-3-4
+
+Every number is node.
+
+Connection rule:
+
+Difference between values is 1.
+
+Largest component size:
+
+Answer = 4
+
+Problems:
+
+* Longest Consecutive Sequence
+
+==================================================
+
+PATTERN 8:
+DYNAMIC CONNECTIVITY
+
+Used when connections keep getting added.
+
+Example:
+
+Operations:
+
+connect(1,2)
+
+connect(2,3)
+
+query(1,3)
+
+Instead of DFS:
+
+find(1)==find(3)
+
+Problems:
+
+* Number of Islands II
+* Dynamic Graph Connectivity
+
+==================================================
+
+DFS/BFS VS UNION FIND
+
+Use DFS/BFS when:
+
+* Need traversal
+* Need shortest path
+* Need actual route
+* Graph already exists
+
+Examples:
+
+Course Schedule
+Clone Graph
+Word Ladder
+
+Use Union Find when:
+
+* Need grouping
+* Need merging
+* Need connectivity checks
+* Edges keep getting added
+
+Examples:
+
+Accounts Merge
+Redundant Connection
+Provinces
+Dynamic Islands
+
+==================================================
+
+INTERVIEW TRIGGER WORDS
+
+"Connected"
+→ Union Find
+
+"Same group"
+→ Union Find
+
+"Merge accounts/users"
+→ Union Find
+
+"Friend circle/network"
+→ Union Find
+
+"Island added dynamically"
+→ Union Find
+
+"Detect redundant edge"
+→ Union Find
+
+"Minimum cost connection"
+→ Kruskal + Union Find
+
+==================================================
+
+Recommended Practice Order:
+
+Beginner:
+
+1. Number of Provinces
+2. Redundant Connection
+3. Graph Valid Tree
+
+Intermediate:
+
+4. Accounts Merge
+5. Longest Consecutive Sequence
+6. Similar String Groups
+
+Advanced:
+
+7. Number of Islands II
+8. Making a Large Island
+9. Regions Cut By Slashes
+10. Min Cost to Connect All Points
+
+Master these patterns and most DSU interview problems become recognizable.
